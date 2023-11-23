@@ -126,7 +126,20 @@ async function main() {
   }
 }
 
-main().catch((e) => {
+async function runScriptForever() {
+  while (true) {
+    try {
+      await main();
+      console.log("Script executed successfully. Waiting for 30 seconds...");
+      // Wait for 30 seconds before running the script again
+      await new Promise((resolve) => setTimeout(resolve, 30000));
+    } catch (error) {
+      console.error(`Error running script: ${error.message}`);
+    }
+  }
+}
+
+runScriptForever().catch((e) => {
   console.error(e);
   process.exit(1);
 });

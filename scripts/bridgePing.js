@@ -1,11 +1,13 @@
 /* eslint-disable no-await-in-loop, no-use-before-define, no-lonely-if, import/no-dynamic-require, global-require */
 /* eslint-disable no-console, no-inner-declarations, no-undef, import/no-unresolved, no-restricted-syntax */
+
+// npx hardhat run scripts/bridgePing.js --network polygonZKEVMTestnet
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const { ethers } = require("hardhat");
 
 // const networkIDMainnet = 0;
-const networkIDzkEVM = 1;
+const networkIDzkEVM = 0;
 
 const pathPingPongOutput = path.join(
   __dirname,
@@ -39,11 +41,12 @@ async function main() {
   );
 
   const forceUpdateGlobalExitRoot = true; // fast bridge
-  const pingValue = 22222;
+  const pingValue = 69340;
   const tx = await nftBridgeContract.bridgePingMessage(
     networkIDzkEVM, // Send to the zkEVM
     forceUpdateGlobalExitRoot,
-    pingValue
+    pingValue,
+    { gasLimit: 3000000 }
   );
 
   console.log(await tx.wait());

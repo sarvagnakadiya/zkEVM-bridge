@@ -47,6 +47,7 @@
   },
   "scripts": {
     "deploy:pingPong:goerli": "npx hardhat run deployment/deployPingPong.js --network goerli",
+    "deploy:pingPong:polygonZKEVMTestnet": "npx hardhat run deployment/deployPingPong.js --network polygonZKEVMTestnet",
     "deploy:pingPong:mainnet": "npx hardhat run deployment/deployPingPong.js --network mainnet",
     "verify:sender:goerli": "npx hardhat run deployment/verifySender.js --network goerli",
     "verify:sender:mainnet": "npx hardhat run deployment/verifySender.js --network mainnet",
